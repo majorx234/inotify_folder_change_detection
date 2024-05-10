@@ -7,7 +7,7 @@
 int do_shutdown = 0;
 
 void sig_int_handler(int sig) {
-  do_shutdown = 0;
+  do_shutdown = 1;
   std::cout << "Received sig: " << sig
              << " in thread: " << std::this_thread::get_id();
 }
