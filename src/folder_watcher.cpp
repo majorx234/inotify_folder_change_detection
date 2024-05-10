@@ -1,13 +1,16 @@
 #include <signal.h>
 #include <unistd.h>
+#include <thread>
+#include <memory.h>
+#include <iostream>
+
+int do_shutdown = 0;
 
 void sig_int_handler(int sig) {
   do_shutdown = 0;
-  LOG(DEBUG) << "Received sig: " << sig
+  std::cout << "Received sig: " << sig
              << " in thread: " << std::this_thread::get_id();
 }
-
-int do_shutdown = 0;
 
 int main() {
   struct sigaction action;
